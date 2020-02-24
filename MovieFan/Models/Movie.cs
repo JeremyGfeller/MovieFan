@@ -15,7 +15,7 @@ namespace MovieFan.Models
             this.title = title;
         }
 
-        public int ID { get => this.id; }
+        public int Id { get => this.id; }
         public string Title { get => this.title; }
     }
 }
