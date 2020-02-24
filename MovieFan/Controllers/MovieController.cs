@@ -10,23 +10,20 @@ namespace MovieFan.Controllers
 {
     public class MovieController : Controller
     {
-        List<Movie> movies = new List<Movie>()
-        {
-            new Movie(1, "Taxi"),
-            new Movie(2, "Fast & Furious"),
-            new Movie(3, "Transporteur")
-        };
+        moviefanContext db = new moviefanContext();
 
         // GET: Movie
         public ActionResult Index()
         {
-            return View(movies);
+            List<Movies> allmovies = db.Movies.ToList();
+            return View(allmovies);
         }
 
         // GET: Movie/Details/5
         public ActionResult Details(int id)
         {
-            return View(movies[id-1]);
+            Movies movie = db.Movies.Find(id);
+            return View(movie);
         }
 
         // GET: Movie/Create
