@@ -1,4 +1,4 @@
-﻿@model List<Movie>
+﻿@model List<Movies>
 @{
     ViewData["Title"] = "index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,9 +6,9 @@
 
     <div class="container">
         <h1>Liste de films</h1>
-        @foreach (Movie movie in Model)
+        @foreach (Movies movie in Model)
         {
-            <a href="/Movie/Details/@movie.ID">
+            <a href="/Movie/Details/@movie.Id">
                 <div class="row border p-3">
                     @movie.Title
                 </div>

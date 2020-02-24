@@ -1,4 +1,4 @@
-﻿@model MovieFan.Models.Movie
+﻿@model MovieFan.Models.Movies
 
 @{
     ViewData["Title"] = "Details";
@@ -10,13 +10,11 @@
 <div>
     <h4>Détails de @Model.Title</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ID): @Model.ID
-        </dt>
-    </dl>
+    <div class="row">
+           @Model.Synopsis
+    </div>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { Model.Id }) |
     <a asp-action="Index">Back to List</a>
 </div>
