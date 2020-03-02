@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MovieFan.Models
 {
     public partial class Users
     {
-        public Users()
+        [NotMapped]
+        public bool isAdministrator
         {
-            UserLikeMovie = new HashSet<UserLikeMovie>();
+            get => (this.IsAdmin == 1);
+            set => this.IsAdmin = (value ? (byte)1 : (byte)0);
         }
-
-        public int Id { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public byte? IsAdmin { get; set; }
-
-        public virtual ICollection<UserLikeMovie> UserLikeMovie { get; set; }
     }
 }
