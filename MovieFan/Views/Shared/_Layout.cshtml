@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MovieFan</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/vendor.min.css" />
+    <script src="~/vendor.min.js"></script>
+    <script src="~/js/movieFan.js"></script>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -32,6 +34,10 @@
             </div>
         </nav>
     </header>
+    @if (TempData.Peek("flashMessage") != null)
+    {
+        <div class="alert alert-info text-center">@TempData["flashMessage"]</div>
+    }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

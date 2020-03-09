@@ -14,5 +14,10 @@ namespace MovieFan.Models
             get => (this.IsAdmin == 1);
             set => this.IsAdmin = (value ? (byte)1 : (byte)0);
         }
+
+        public string FullName
+        {
+            get => $"{this.Firstname} {this.Lastname}";
+        }
     }
 }

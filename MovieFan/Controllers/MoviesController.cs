@@ -33,16 +33,19 @@ namespace MovieFan.Controllers
                 return NotFound();
             }
 
-            var movies = await _context.Movies
+            Movies movie = await _context.Movies
                 .Include(m => m.Category)
                 .Include(m => m.Rating)
+                .Include(m => m.UserLikeMovie)
+                .ThenInclude(m => m.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (movies == null)
+
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            return View(movies);
+            return View(movie);
         }
 
         // GET: Movies/Create
@@ -84,8 +87,10 @@ namespace MovieFan.Controllers
             {
                 return NotFound();
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", movies.CategoryId);
-            ViewData["RatingId"] = new SelectList(_context.Ratings, "Id", "Name", movies.RatingId);
+            ViewBag.rattings = _context.Ratings.ToList();
+
             return View(movies);
         }
 
@@ -119,6 +124,7 @@ namespace MovieFan.Controllers
                         throw;
                     }
                 }
+                TempData["flashMessage"] = "Changement enregistré ";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", movies.CategoryId);
