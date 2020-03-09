@@ -7,8 +7,12 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Movies</h4>
+<div id="detailsPart">
+    <div class="row">
+        <h4>@Model.Title</h4>
+        <a asp-action="Edit" asp-route-id="@Model.Id"><input type="submit" class="btn btn-sm btn-success ml-5" value="Edit" /></a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -55,7 +59,5 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
